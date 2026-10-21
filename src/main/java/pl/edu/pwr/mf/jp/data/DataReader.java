@@ -1,4 +1,4 @@
-package Data;
+package pl.edu.pwr.mf.jp.data;
 
 import java.io.IOException;
 import java.nio.file.Files;
