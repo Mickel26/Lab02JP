@@ -24,8 +24,14 @@ public class DataReader {
         fans = new ArrayList<>();
 
         for (String content : contents) {
+            content = content.trim();
+
+            if(content.startsWith("#") || content.isEmpty()) {
+                continue;
+            }
+
             String[] t = content.split(",");
-            fans.add(new Fan(Integer.parseInt(t[0]), Integer.parseInt(t[1]), Integer.parseInt(t[2]), Integer.parseInt(t[3])));
+            fans.add(new Fan(Integer.parseInt(t[0].trim()), Integer.parseInt(t[1].trim()), Integer.parseInt(t[2].trim()), Integer.parseInt(t[3].trim())));
         }
     }
 
@@ -34,8 +40,14 @@ public class DataReader {
         rooms = new ArrayList<>();
 
         for (String content : contents) {
+            content = content.trim();
+
+            if(content.startsWith("#") || content.isEmpty()) {
+                continue;
+            }
+
             String[] t = content.split(",");
-            rooms.add(new Room(Integer.parseInt(t[0]), Integer.parseInt(t[1]), Integer.parseInt(t[2])));
+            rooms.add(new Room(Integer.parseInt(t[0].trim()), Integer.parseInt(t[1].trim()), Integer.parseInt(t[2].trim())));
         }
     }
 }

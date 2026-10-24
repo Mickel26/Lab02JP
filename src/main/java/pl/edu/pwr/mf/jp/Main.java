@@ -12,6 +12,4 @@ void main() throws IOException {
 
     System.out.println(fans);
     System.out.println(rooms);
-
-    Solver.solve();
 }
