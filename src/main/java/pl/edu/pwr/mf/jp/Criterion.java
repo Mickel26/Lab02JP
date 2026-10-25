@@ -11,21 +11,32 @@ public class Criterion {
     private final double costWeight;
 
     private final double maxCost;
+    private final double maxVolume;
 
-    public Criterion(double efficiencyWeight, double deviationWeight, double costWeight, List<Fan> fans){
+    public Criterion(double efficiencyWeight, double deviationWeight, double costWeight, List<Fan> fans, List<Room> rooms){
         this.efficiencyWeight = efficiencyWeight;
         this.deviationWeight = deviationWeight;
         this.costWeight = costWeight;
 
-        int max = 0;
+
+        int maxC = 0;
 
         for (Fan fan : fans) {
-            if (fan.cost() > max) {
-                max = fan.cost();
+            if (fan.cost() > maxC) {
+                maxC = fan.cost();
             }
         }
 
-        this.maxCost = max;
+        this.maxCost = maxC;
+
+        int maxV = 0;
+        for (Room room : rooms) {
+            if (room.volume() > maxV) {
+                maxV = room.volume();
+            }
+        }
+
+        this.maxVolume = maxV;
     }
 
     public boolean fanFits(Fan fan, Room room) {
@@ -33,7 +44,7 @@ public class Criterion {
     }
 
     public double pairPenalty(Fan fan, Room room) {
-        double efficiency = -(double) fan.efficiency() / room.volume();
+        double efficiency = -(double) Math.min(fan.efficiency(), room.volume()) / maxVolume;
         double deviation = Math.abs(fan.efficiency() - room.volume()) / (double) room.volume();
         double cost = fan.cost() / maxCost;
 
