@@ -17,16 +17,27 @@ public class Main {
         //System.out.println(fans);
         //System.out.println(rooms);
 
-        Criterion maxVolumeMinCost = new Criterion(1, 0, 0.5, fans, rooms); //najmocniejsze wentylaaotry do najwiekszych pokoi
-        Criterion minDeviationMinCost = new Criterion(0, 1, 0.5, fans, rooms); //wydajnosc ma byc jak najblizsza kuabturze
+        Criterion maxVolumeMinCost = new Criterion(1, 0, 0.5, fans, rooms); //najmocniejsze wentylaaotry do najwiekszych pokoi, wymienic jak najwiecej powietrza
+        Criterion minDeviationMinCost = new Criterion(0, 1, 0.5, fans, rooms); //wydajnosc ma byc jak najblizsza kubaturze
 
         BruteForceSolver bruteforce = new BruteForceSolver(rooms, fans, maxVolumeMinCost);
         BruteForceSolver bruteforce1 = new BruteForceSolver(rooms, fans, minDeviationMinCost);
 
+        GreedyAlgorithmSolver greedy = new GreedyAlgorithmSolver(rooms, fans, maxVolumeMinCost);
+        GreedyAlgorithmSolver greedy1 = new GreedyAlgorithmSolver(rooms, fans, minDeviationMinCost);
+
         Solution bruteforceSolution = bruteforce.solve();
         Solution bruteforceSolution1 = bruteforce1.solve();
 
+        Solution greedySolution = greedy.solve();
+        Solution greedySolution1 = greedy1.solve();
+
+        System.out.println("Bruteforce: ");
         System.out.println(bruteforceSolution.toString());
         System.out.println(bruteforceSolution1.toString());
+
+        System.out.println("\nAlgorytm zachlanny: ");
+        System.out.println(greedySolution.toString());
+        System.out.println(greedySolution1.toString());
     }
 }
