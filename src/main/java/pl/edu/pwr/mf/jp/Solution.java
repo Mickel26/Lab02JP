@@ -7,19 +7,19 @@ import java.util.List;
 import java.util.Locale;
 
 public class Solution {
-    private final Fan[] matchedFans;
+    private final List<Fan> matchedFans;
     private final double score;
     private final long time;
     private final List<Room> rooms;
 
-    Solution(List<Room> rooms, Fan[] matchedFans, double score, long time){
+    Solution(List<Room> rooms, List<Fan> matchedFans, double score, long time){
         this.rooms = rooms;
         this.matchedFans = matchedFans;
         this.score = score;
         this.time = time;
     }
 
-    public Fan[] getMatchedFans() {
+    public List<Fan> getMatchedFans() {
         return matchedFans;
     }
 
@@ -41,7 +41,7 @@ public class Solution {
 
         for(int i = 0; i < rooms.size(); i++) {
             Room room = rooms.get(i);
-            Fan fan = matchedFans[i];
+            Fan fan = matchedFans.get(i);
 
             sb.append("Pomieszczenie ").append(room.id()).append(" -> wentylator ").append(fan.id()).append(" wydajność: ").append(fan.efficiency()).append(", koszt: ").append(fan.cost()).append("\n");
         }
