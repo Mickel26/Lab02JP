@@ -1,0 +1,10 @@
+# nr pomieszczenia, kubatura [m3], rozmiar miejsca montażu [U]
+1, 118, 2
+2, 180, 2
+3, 303, 5
+4, 291, 5
+5, 453, 3
+6, 98, 5
+7, 64, 5
+8, 271, 2
+9, 406, 5
